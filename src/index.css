@@ -1,46 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&family=Pacifico&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
+    /* Fonts */
     --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-geist: 'Geist', system-ui, sans-serif;
-    --font-geist-mono: 'Geist Mono', monospace;
-    --font-mona: 'Mona Sans', system-ui, sans-serif;
-    --font-ibm-plex: 'IBM Plex Sans', system-ui, sans-serif;
-    --font-manrope: 'Manrope', system-ui, sans-serif;
+    --font-heading: 'Montserrat', 'Inter', system-ui, sans-serif;
+    --font-accent: 'Pacifico', cursive;
+
+    /* Colors */
+    --hippie-500: #4CAF50; /* Primary Hippie Green */
+    --hippie-600: #43A047;
+    --sunset-500: #FF8A65;
+    --sky-500: #42A5F5;
+    --charcoal: #37474F;
+    --light: #F5F5F5;
+    --success: #4CAF50;
+    --warning: #FFC107;
+    --error: #F44336;
+    --info: #2196F3;
   }
 
-  html {
-    font-family: var(--font-sans);
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
+  html { font-family: var(--font-sans); font-feature-settings: "rlig" 1, "calt" 1; }
+  body { @apply antialiased; }
 
-  body {
-    @apply antialiased;
-  }
+  h1,h2,h3,h4,h5,h6 { font-family: var(--font-heading); }
 }
 
-/* Custom utility classes for shadcn/ui patterns */
+/* Palette utilities */
 @layer utilities {
-  .animate-in {
-    animation-name: animateIn;
-    animation-duration: 350ms;
-    --tw-enter-opacity: initial;
-    --tw-enter-scale: initial;
-    --tw-enter-rotate: initial;
-    --tw-enter-translate-x: initial;
-    --tw-enter-translate-y: initial;
-  }
+  .text-charcoal { color: var(--charcoal); }
+  .bg-light { background-color: var(--light); }
 
-  .animate-out {
-    animation-name: animateOut;
-    animation-duration: 350ms;
-    --tw-exit-opacity: initial;
-    --tw-exit-scale: initial;
-    --tw-exit-rotate: initial;
-    --tw-exit-translate-x: initial;
-    --tw-exit-translate-y: initial;
-  }
+  .text-hippie-500 { color: var(--hippie-500); }
+  .text-hippie-600 { color: var(--hippie-600); }
+  .bg-hippie-500 { background-color: var(--hippie-500); }
+  .bg-hippie-50 { background-color: color-mix(in oklab, var(--hippie-500) 10%, white); }
+  .border-hippie-500 { border-color: var(--hippie-500); }
+
+  .text-sunset-500 { color: var(--sunset-500); }
+  .text-sky-500 { color: var(--sky-500); }
+
+  .font-accent { font-family: var(--font-accent); }
+
+  /* Motion design tokens */
+  .ease-standard { transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1); }
+  .dur-200 { transition-duration: 200ms; }
+  .dur-300 { transition-duration: 300ms; }
+  .dur-500 { transition-duration: 500ms; }
+
+  .animate-in { animation-name: animateIn; animation-duration: 350ms; }
+  .animate-out { animation-name: animateOut; animation-duration: 350ms; }
 }
